@@ -1,6 +1,6 @@
 package de.claudioaltamura.java.assertj;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
@@ -10,7 +10,7 @@ class CarTest {
     Car car = new Car();
     car.setWheels(4);
 
-    assertEquals(car.getWheels(),4);
+    assertThat(car.getWheels()).isEqualTo(4);
   }
 
 }
