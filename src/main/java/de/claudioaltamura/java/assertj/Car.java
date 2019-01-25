@@ -42,6 +42,10 @@ public class Car {
     this.type = type;
   }
 
+  public void explode() throws Exception {
+    throw new Exception("boom!");
+  }
+  
   @Override
   public String toString() {
     return "Car [name=" + name + ", wheels=" + wheels + ", color=" + color + ", type=" + type + "]";
