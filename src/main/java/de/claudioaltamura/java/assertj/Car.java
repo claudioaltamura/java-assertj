@@ -1,3 +1,4 @@
+
 package de.claudioaltamura.java.assertj;
 
 public class Car {

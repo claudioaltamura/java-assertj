@@ -43,22 +43,35 @@ class CarTest {
     mercedes.setName("Mercedes");
     cars.add(mercedes);
 
-    assertThat(cars).contains(bmw,mercedes);
+    assertThat(cars).contains(bmw, mercedes);
   }
 
   @Test
   void testAs() {
     Car bot = new Car();
     bot.setWheels(3);
-    
+
     assertThat(bot.getWheels()).as("check wheels", bot.getWheels()).isEqualTo(3);
   }
 
   @Test
   void testException() {
     Car oldCar = new Car();
-    Throwable thrown = catchThrowable(()->oldCar.explode());
+    Throwable thrown = catchThrowable(() -> oldCar.explode());
     assertThat(thrown).hasMessage("boom!");
+  }
+
+  @Test
+  void test() {
+    List<Car> cars = new ArrayList<>();
+    Car bmw = new Car();
+    bmw.setName("BMW");
+    cars.add(bmw);
+    Car vw = new Car();
+    vw.setName("VW");
+    cars.add(vw);
+
+    assertThat(cars).extracting(Car::getName).doesNotContain("VW");
   }
 
 }
