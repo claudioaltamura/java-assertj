@@ -67,9 +67,9 @@ class CarTest {
     Car bmw = new Car();
     bmw.setName("BMW");
     cars.add(bmw);
-    Car vw = new Car();
-    vw.setName("VW");
-    cars.add(vw);
+    Car mercedes = new Car();
+    mercedes.setName("Mercedes");
+    cars.add(mercedes);
 
     assertThat(cars).extracting(Car::getName).doesNotContain("VW");
   }
