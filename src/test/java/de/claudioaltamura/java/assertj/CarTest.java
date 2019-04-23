@@ -62,7 +62,7 @@ class CarTest {
   }
 
   @Test
-  void test() {
+  void testExtracting() {
     List<Car> cars = new ArrayList<>();
     Car bmw = new Car();
     bmw.setName("BMW");
@@ -72,6 +72,39 @@ class CarTest {
     cars.add(mercedes);
 
     assertThat(cars).extracting(Car::getName).doesNotContain("VW");
+  }
+
+  @Test
+  void testFiltering() {
+    List<Car> cars = new ArrayList<>();
+    Car bmw = new Car();
+    bmw.setName("BMW");
+    cars.add(bmw);
+    Car mercedes = new Car();
+    mercedes.setName("Mercedes");
+    cars.add(mercedes);
+    Car vw = new Car();
+    vw.setName("VW");
+    cars.add(vw);
+
+    assertThat(cars).filteredOn(car -> car.getName().contains("W")).contains(bmw, vw);
+  }
+
+  @Test
+  void testFilteringAndExtracting() {
+    List<Car> cars = new ArrayList<>();
+    Car bmw = new Car();
+    bmw.setName("BMW");
+    cars.add(bmw);
+    Car mercedes = new Car();
+    mercedes.setName("Mercedes");
+    cars.add(mercedes);
+    Car vw = new Car();
+    vw.setName("VW");
+    cars.add(vw);
+
+    assertThat(cars).filteredOn(car -> car.getName().contains("W")).extracting(Car::getName)
+        .contains("BMW", "VW");
   }
 
 }
