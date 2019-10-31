@@ -128,4 +128,17 @@ class CarTest {
 
   }
 
+  @Test
+  void testFilterOnProperty() {
+    List<Car> cars = new ArrayList<>();
+    Car bmw = new Car();
+    bmw.setName("BMW");
+    cars.add(bmw);
+    Car mercedes = new Car();
+    mercedes.setName("Mercedes");
+    cars.add(mercedes);
+
+    assertThat(cars).filteredOn("name", "BMW").size().isEqualTo(1);
+  }
+
 }
