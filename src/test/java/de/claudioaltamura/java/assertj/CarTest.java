@@ -1,6 +1,7 @@
 package de.claudioaltamura.java.assertj;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,16 @@ class CarTest {
     Car oldCar = new Car();
     Throwable thrown = catchThrowable(() -> oldCar.explode());
     assertThat(thrown).hasMessage("boom!");
+  }
+
+  @Test
+  public void testDoesNotThrowAnyException() {
+    Car car = new Car();
+    assertThatCode(
+        () -> {
+          car.hoot();
+        })
+    .doesNotThrowAnyException();
   }
 
   @Test

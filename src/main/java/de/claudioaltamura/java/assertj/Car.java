@@ -43,6 +43,10 @@ public class Car {
     this.type = type;
   }
 
+  public void hoot() {
+    System.out.println("hoot hoot");
+  }
+
   public void explode() throws Exception {
     throw new Exception("boom!");
   }
