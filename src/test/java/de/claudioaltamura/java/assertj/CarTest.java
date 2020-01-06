@@ -3,6 +3,8 @@ package de.claudioaltamura.java.assertj;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.assertj.core.api.Assertions.tuple;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Condition;
@@ -141,15 +143,40 @@ class CarTest {
 
   @Test
   void testFilterOnProperty() {
-    List<Car> cars = new ArrayList<>();
-    Car bmw = new Car();
-    bmw.setName("BMW");
-    cars.add(bmw);
-    Car mercedes = new Car();
-    mercedes.setName("Mercedes");
-    cars.add(mercedes);
+    List<Car> cars = this.createCarList();
 
     assertThat(cars).filteredOn("name", "BMW").size().isEqualTo(1);
+  }
+
+  @Test
+	void testExtractWithTuple() {
+	  List<Car> cars = new ArrayList<>();
+
+	  Car bmw = new Car();
+	  bmw.setName("BMW");
+	  bmw.setColor("white");
+	  cars.add(bmw);
+
+	  assertThat(cars).extracting("name", "color").contains(tuple("BMW", "white"));
+  	}
+
+  private List<Car>	createCarList() {
+	  List<Car> cars = new ArrayList<>();
+
+	  Car bmw = new Car();
+	  bmw.setName("BMW");
+	  bmw.setColor("white");
+	  cars.add(bmw);
+	  Car mercedes = new Car();
+	  mercedes.setName("Mercedes");
+	  mercedes.setName("black");
+	  cars.add(mercedes);
+	  Car vw = new Car();
+	  vw.setName("Ferrari");
+	  vw.setName("red");
+	  cars.add(vw);
+
+	  return cars;
   }
 
 }
