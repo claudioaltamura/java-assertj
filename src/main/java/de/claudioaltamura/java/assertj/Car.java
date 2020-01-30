@@ -1,14 +1,13 @@
-
 package de.claudioaltamura.java.assertj;
 
 public class Car {
-  
+
   private String name;
-  
+
   private int wheels;
-  
+
   private String color;
-  
+
   private String type;
 
   public String getName() {
@@ -50,10 +49,9 @@ public class Car {
   public void explode() throws Exception {
     throw new Exception("boom!");
   }
-  
+
   @Override
   public String toString() {
     return "Car [name=" + name + ", wheels=" + wheels + ", color=" + color + ", type=" + type + "]";
   }
-
 }

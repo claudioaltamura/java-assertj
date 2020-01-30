@@ -69,10 +69,10 @@ class CarTest {
   public void testDoesNotThrowAnyException() {
     Car car = new Car();
     assertThatCode(
-        () -> {
-          car.hoot();
-        })
-    .doesNotThrowAnyException();
+            () -> {
+              car.hoot();
+            })
+        .doesNotThrowAnyException();
   }
 
   @Test
@@ -117,7 +117,9 @@ class CarTest {
     vw.setName("VW");
     cars.add(vw);
 
-    assertThat(cars).filteredOn(car -> car.getName().contains("W")).extracting(Car::getName)
+    assertThat(cars)
+        .filteredOn(car -> car.getName().contains("W"))
+        .extracting(Car::getName)
         .contains("BMW", "VW");
   }
 
@@ -131,14 +133,14 @@ class CarTest {
     mercedes.setName("Mercedes");
     cars.add(mercedes);
 
-    Condition<Car> bmwCondition = new Condition<Car>() {
-      @Override
-      public boolean matches(Car car) {
-        return "BMW".equals(car.getName());
-      }
-    };
+    Condition<Car> bmwCondition =
+        new Condition<Car>() {
+          @Override
+          public boolean matches(Car car) {
+            return "BMW".equals(car.getName());
+          }
+        };
     assertThat(cars).filteredOn(bmwCondition).containsOnly(bmw);
-
   }
 
   @Test
@@ -149,34 +151,48 @@ class CarTest {
   }
 
   @Test
-	void testExtractWithTuple() {
-	  List<Car> cars = new ArrayList<>();
+  void testExtractWithTuple() {
+    List<Car> cars = new ArrayList<>();
 
-	  Car bmw = new Car();
-	  bmw.setName("BMW");
-	  bmw.setColor("white");
-	  cars.add(bmw);
+    Car bmw = new Car();
+    bmw.setName("BMW");
+    bmw.setColor("white");
+    cars.add(bmw);
 
-	  assertThat(cars).extracting("name", "color").contains(tuple("BMW", "white"));
-  	}
-
-  private List<Car>	createCarList() {
-	  List<Car> cars = new ArrayList<>();
-
-	  Car bmw = new Car();
-	  bmw.setName("BMW");
-	  bmw.setColor("white");
-	  cars.add(bmw);
-	  Car mercedes = new Car();
-	  mercedes.setName("Mercedes");
-	  mercedes.setName("black");
-	  cars.add(mercedes);
-	  Car vw = new Car();
-	  vw.setName("Ferrari");
-	  vw.setName("red");
-	  cars.add(vw);
-
-	  return cars;
+    assertThat(cars).extracting("name", "color").contains(tuple("BMW", "white"));
   }
 
+  @Test
+  void testFlatMapExtracting() {
+    Car bmw = new Car();
+    bmw.setName("BMW");
+    bmw.setColor("white");
+
+    CarFleet fleet = new CarFleet();
+    fleet.add(bmw);
+
+    List<CarFleet> fleets = new ArrayList<>();
+    fleets.add(fleet);
+
+    assertThat(fleets).flatExtracting(input -> input.getFleet()).contains(bmw);
+  }
+
+  private List<Car> createCarList() {
+    List<Car> cars = new ArrayList<>();
+
+    Car bmw = new Car();
+    bmw.setName("BMW");
+    bmw.setColor("white");
+    cars.add(bmw);
+    Car mercedes = new Car();
+    mercedes.setName("Mercedes");
+    mercedes.setName("black");
+    cars.add(mercedes);
+    Car vw = new Car();
+    vw.setName("Ferrari");
+    vw.setName("red");
+    cars.add(vw);
+
+    return cars;
+  }
 }
