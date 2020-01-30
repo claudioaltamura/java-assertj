@@ -2,6 +2,8 @@ plugins {
 	id 'java'
 	id 'eclipse' // optional (to generate Eclipse project files)
 	id 'idea' // optional (to generate IntelliJ IDEA project files)
+  id "com.github.ben-manes.versions" version "0.21.0"
+  id "com.diffplug.gradle.spotless" version "3.23.0"
 }
 
 repositories {
@@ -20,5 +22,11 @@ test {
 	testLogging {
 		events "passed", "skipped", "failed"
 	}
+}
+
+spotless {
+  java {
+    googleJavaFormat()
+  }
 }
 
