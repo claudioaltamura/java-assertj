@@ -177,6 +177,16 @@ class CarTest {
     assertThat(fleets).flatExtracting(input -> input.getFleet()).contains(bmw);
   }
 
+  @Test
+  void testExtractingResultOf() {
+	  List<Car> cars = createCarList();
+	  assertThat(cars)
+		  .extractingResultOf("getColor")
+		  	.contains("white", "black", "red")
+		  	.doesNotContain("blue");
+  }
+
+
   private List<Car> createCarList() {
     List<Car> cars = new ArrayList<>();
 
@@ -186,11 +196,11 @@ class CarTest {
     cars.add(bmw);
     Car mercedes = new Car();
     mercedes.setName("Mercedes");
-    mercedes.setName("black");
+    mercedes.setColor("black");
     cars.add(mercedes);
     Car vw = new Car();
     vw.setName("Ferrari");
-    vw.setName("red");
+    vw.setColor("red");
     cars.add(vw);
 
     return cars;
