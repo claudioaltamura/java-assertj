@@ -179,13 +179,12 @@ class CarTest {
 
   @Test
   void testExtractingResultOf() {
-	  List<Car> cars = createCarList();
-	  assertThat(cars)
-		  .extractingResultOf("getColor")
-		  	.contains("white", "black", "red")
-		  	.doesNotContain("blue");
+    List<Car> cars = createCarList();
+    assertThat(cars)
+        .extractingResultOf("getColor")
+        .contains("white", "black", "red")
+        .doesNotContain("blue");
   }
-
 
   private List<Car> createCarList() {
     List<Car> cars = new ArrayList<>();
