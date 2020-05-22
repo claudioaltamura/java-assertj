@@ -1,9 +1,9 @@
 plugins {
 	id 'java'
-	id 'eclipse' // optional (to generate Eclipse project files)
-	id 'idea' // optional (to generate IntelliJ IDEA project files)
-  id "com.github.ben-manes.versions" version "0.21.0"
-  id "com.diffplug.gradle.spotless" version "3.23.0"
+	id 'eclipse'
+	id 'idea'
+    id "com.github.ben-manes.versions" version "0.21.0"
+    id "com.diffplug.gradle.spotless" version "3.30.0"
 }
 
 repositories {
@@ -11,10 +11,9 @@ repositories {
 }
 
 dependencies {
-	testCompile('org.junit.jupiter:junit-jupiter-api:5.3.1')
- 	testCompile("org.assertj:assertj-core:3.11.1")
-	testCompile('org.junit.jupiter:junit-jupiter-params:5.3.1')
-	testRuntime('org.junit.jupiter:junit-jupiter-engine:5.3.1')
+	testCompile('org.junit.jupiter:junit-jupiter-api:5.6.2')
+ 	testCompile("org.assertj:assertj-core:3.16.1")
+	testRuntime('org.junit.jupiter:junit-jupiter-engine:5.6.2')
 }
 
 test {
