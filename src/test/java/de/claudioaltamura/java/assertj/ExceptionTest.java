@@ -9,7 +9,7 @@ class ExceptionTest {
   @Test
   void testException() {
     Car oldCar = new Car();
-    Throwable thrown = catchThrowable(() -> oldCar::explode());
+    Throwable thrown = catchThrowable(() -> oldCar.explode());
     assertThat(thrown).hasMessage("boom!");
   }
 
