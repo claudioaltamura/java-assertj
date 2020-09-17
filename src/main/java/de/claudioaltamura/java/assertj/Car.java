@@ -57,10 +57,10 @@ public class Car {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Car car = (Car) o;
-    return wheels == car.wheels &&
-            Objects.equals(name, car.name) &&
-            Objects.equals(color, car.color) &&
-            Objects.equals(type, car.type);
+    return wheels == car.wheels
+        && Objects.equals(name, car.name)
+        && Objects.equals(color, car.color)
+        && Objects.equals(type, car.type);
   }
 
   @Override

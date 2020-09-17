@@ -39,5 +39,4 @@ class MapTest {
 
     assertThat(createCarMap()).doesNotContainEntry(abc.getName(), abc);
   }
-
 }
