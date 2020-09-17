@@ -2,8 +2,15 @@ package de.claudioaltamura.java.assertj;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 class TestDataProvider {
+
+  static Map<String, Car> createCarMap() {
+    return createCarList().stream().collect(Collectors.toMap(Car::getName, Function.identity()));
+  }
 
   static List<Car> createCarList() {
     List<Car> cars = new ArrayList<>();

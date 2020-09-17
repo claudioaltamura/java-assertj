@@ -4,3 +4,8 @@
 
 # java-assertj
 assertj examples
+
+* Map
+    * contains
+    * doesNotContains
+* ...

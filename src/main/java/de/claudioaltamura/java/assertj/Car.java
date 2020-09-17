@@ -1,5 +1,7 @@
 package de.claudioaltamura.java.assertj;
 
+import java.util.Objects;
+
 public class Car {
 
   private String name;
@@ -48,6 +50,22 @@ public class Car {
 
   public void explode() throws Exception {
     throw new Exception("boom!");
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Car car = (Car) o;
+    return wheels == car.wheels &&
+            Objects.equals(name, car.name) &&
+            Objects.equals(color, car.color) &&
+            Objects.equals(type, car.type);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, wheels, color, type);
   }
 
   @Override
