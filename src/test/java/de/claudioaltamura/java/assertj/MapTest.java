@@ -39,4 +39,18 @@ class MapTest {
 
     assertThat(createCarMap()).doesNotContainEntry(abc.getName(), abc);
   }
+
+  @Test
+  void testKey() {
+    assertThat(createCarMap().containsKey("BMW"));
+  }
+
+  @Test
+  void testValue() {
+    Car bmw = new Car();
+    bmw.setName("BMW");
+    bmw.setColor("white");
+
+    assertThat(createCarMap().containsValue(bmw));
+  }
 }
