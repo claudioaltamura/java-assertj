@@ -8,4 +8,5 @@ assertj examples
 * Map
     * contains
     * doesNotContains
+* custom assertions
 * ...
