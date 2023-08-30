@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
-    id("com.diffplug.spotless") version "6.19.0"
-    id("com.github.ben-manes.versions") version "0.46.0"
+    id("com.diffplug.spotless") version "6.21.0"
+    id("com.github.ben-manes.versions") version "0.47.0"
 }
 
 repositories {
@@ -9,9 +9,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation('org.junit.jupiter:junit-jupiter-api:5.9.3')
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.10.0')
     testImplementation("org.assertj:assertj-core:3.24.2")
-    testImplementation('org.junit.jupiter:junit-jupiter-engine:5.9.2')
+    testImplementation('org.junit.jupiter:junit-jupiter-engine:5.10.0')
 }
 
 test {
