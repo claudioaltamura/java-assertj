@@ -42,7 +42,7 @@ class MapTest {
 
   @Test
   void testKey() {
-    assertThat(createCarMap().containsKey("BMW"));
+    assertThat(createCarMap()).containsKey("BMW");
   }
 
   @Test
@@ -51,6 +51,6 @@ class MapTest {
     bmw.setName("BMW");
     bmw.setColor("white");
 
-    assertThat(createCarMap().containsValue(bmw));
+    assertThat(createCarMap()).containsValue(bmw);
   }
 }
