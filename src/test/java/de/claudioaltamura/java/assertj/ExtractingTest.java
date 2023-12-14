@@ -47,7 +47,7 @@ class ExtractingTest {
     List<CarFleet> fleets = new ArrayList<>();
     fleets.add(fleet);
 
-    assertThat(fleets).flatExtracting(input -> input.getFleet()).contains(bmw);
+    assertThat(fleets).flatExtracting(CarFleet::getFleet).contains(bmw);
   }
 
   @Test
