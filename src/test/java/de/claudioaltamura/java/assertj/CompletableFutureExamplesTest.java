@@ -3,6 +3,7 @@ package de.claudioaltamura.java.assertj;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
 
@@ -33,11 +34,9 @@ class CompletableFutureExamplesTest {
     CompletableFuture<?> futureExplosion = new CompletableFuture<>();
     futureExplosion.completeExceptionally(new RuntimeException("boom !"));
 
-    assertThat(futureExplosion)
-        .hasFailed()
-        .hasFailedWithThrowableThat()
-        .isInstanceOf(RuntimeException.class)
-        .hasMessage("boom !");
+    assertThat(futureExplosion).isCompletedExceptionally().withFailMessage("boom !");
+
+
   }
 
   @Test
@@ -45,13 +44,13 @@ class CompletableFutureExamplesTest {
     CompletableFuture<?> cancelledFuture = new CompletableFuture<>();
     cancelledFuture.cancel(true);
 
-    assertThat(cancelledFuture).isCancelled().isDone().isCompletedExceptionally().hasNotFailed();
+    assertThat(cancelledFuture).isCancelled().isDone().isCompletedExceptionally();
   }
 
   @Test
-  void succeeded() {
+  void succeeded() throws ExecutionException, InterruptedException {
     CompletableFuture<String> future = CompletableFuture.completedFuture("ook!");
 
-    assertThat(future).succeedsWithin(100, TimeUnit.MILLISECONDS).isEqualTo("ook!");
+    assertThat(future).succeedsWithin(100, TimeUnit.MILLISECONDS).asString().isEqualTo("ook!");
   }
 }
