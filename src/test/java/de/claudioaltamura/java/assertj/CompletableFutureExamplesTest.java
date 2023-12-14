@@ -35,8 +35,6 @@ class CompletableFutureExamplesTest {
     futureExplosion.completeExceptionally(new RuntimeException("boom !"));
 
     assertThat(futureExplosion).isCompletedExceptionally().withFailMessage("boom !");
-
-
   }
 
   @Test
